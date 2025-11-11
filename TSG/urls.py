@@ -21,5 +21,6 @@ from tsg4 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
     path('signup/', views.CustomRegistrationView.as_view(), name='signup'),
 ]
