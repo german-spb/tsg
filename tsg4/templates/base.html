@@ -7,6 +7,24 @@
     <title>Press Any Button</title>
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
 </head>
+
+    {% if user.is_authenticated %}
+    <div class="dropdown">
+        <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            {{ request.user }}
+        </button>
+        <ul class="dropdown-menu dd-color">
+            <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>
+        </ul>
+    </div>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link btn btn-primary my-btn me-3"
+           href="{% url 'login' %}">Войти</a>
+    </li>
+{% endif %}
+
 <body class="d-flex flex-column h-100">
 <section class="al mt-3">
     <div class="container justify-content-center">
