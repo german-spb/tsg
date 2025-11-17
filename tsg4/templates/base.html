@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Press Any Button</title>
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 
     {% if user.is_authenticated %}
@@ -25,17 +26,31 @@
     </li>
 {% endif %}
 
-<body class="d-flex flex-column h-100">
-<section class="al mt-3">
-    <div class="container justify-content-center">
-        <div class="alert alert-dismissible alert-warning">
-            <h4 class="alert-heading">Приветствую вас!</h4>
-            <h5 class="mb-0">Сайт находится в процессе разработки.<br>
-                Следить за процессом разработки и повторять действия, можно в <a href="https://t.me/press_any_button">Telegram-канале
-                    "Код на салфетке"</a></h5>
-        </div>
-    </div>
-</section>
+<!--<body class="d-flex flex-column h-100">-->
+<!--<section class="al mt-3">-->
+<!--    <div class="container justify-content-center">-->
+<!--        <div class="alert alert-dismissible alert-warning">-->
+<!--            <h4 class="alert-heading">Приветствую вас!</h4>-->
+<!--            <h5 class="mb-0">Сайт находится в процессе разработки.<br>-->
+<!--                Следить за процессом разработки и повторять действия, можно в <a href="https://t.me/press_any_button">Telegram-канале-->
+<!--                    "Код на салфетке"</a></h5>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 <script src="{% static "js/bootstrap.bundle.js" %}"></script>
+<!--</body>-->
+<body>
+ <img class="w-50 mx-auto d-block" src="{% static 'img/45A_1.png' %}" alt="photo">
+<nav class="top-menu">
+  <ul class="menu-main">
+    <li><a href="" class="current">Work</a></li>
+    <li><a href="">About</a></li>
+    <li><a href="">Blog</a></li>
+    <li><a href="">Contact</a></li>
+  </ul>
+</nav>
+
 </body>
+
 </html>
