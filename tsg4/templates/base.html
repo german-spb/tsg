@@ -20,13 +20,17 @@
         </ul>
     </div>
 {% else %}
-    <li class="nav-item">
+    <li class="nav-item" style="width: 152.22222px;">
         <a class="nav-link btn btn-primary my-btn me-3"
            href="{% url 'login' %}">Войти</a>
     </li>
+    <li class="nav-item" style="width: 152.22222px;">
+        <a class="nav-link btn btn-primary my-btn me-3"
+           href="{% url 'signup' %}">Регистрация</a>
+    </li>
 {% endif %}
 
-<!--<body class="d-flex flex-column h-100">-->
+<body class="d-flex flex-column h-100">
 <!--<section class="al mt-3">-->
 <!--    <div class="container justify-content-center">-->
 <!--        <div class="alert alert-dismissible alert-warning">-->
@@ -41,13 +45,13 @@
 <script src="{% static "js/bootstrap.bundle.js" %}"></script>
 <!--</body>-->
 <body>
- <img class="w-50 mx-auto d-block" src="{% static 'img/45A_1.png' %}" alt="photo">
+ <img class="w" src="{% static "img/AA45.jpg" %}" alt="photo">
 <nav class="top-menu">
   <ul class="menu-main">
-    <li><a href="" class="current">Work</a></li>
-    <li><a href="">About</a></li>
-    <li><a href="">Blog</a></li>
-    <li><a href="">Contact</a></li>
+    <li><a href="" class="current">Общая информация</a></li>
+    <li><a href="">Объявления, новости</a></li>
+    <li><a href="">Полезная информация</a></li>
+    <li><a href="">Документы, тарифы</a></li>
   </ul>
 </nav>
 

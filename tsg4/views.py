@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'base.html')
 
 class CustomRegistrationView(CreateView):
     form_class = RegistrationForm

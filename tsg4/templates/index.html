@@ -3,24 +3,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{% static "css/main.css" %}" rel="stylesheet">
     <script type="text/javascript" src='js/main.js'></script>
 </head>
+<img src="static/img/AA45.jpg" alt="h" width=100% loading="lazy">
 <header class="header">
   <div class="overlay"></div>
-   <div class="container">
+   <div class="container"></div>
 
-   </div>
 
 </header>
-<body>
-<nav class="navbar navbar-expand-lg fixed-top ">
-   <a class="navbar-brand" href="#">Home</a>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-   </button>
+<!-- {% if user.is_authenticated %}-->
+<!--    <div class="dropdown">-->
+<!--        <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"-->
+<!--                data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--            {{ request.user }}-->
+<!--        </button>-->
+<!--        <ul class="dropdown-menu dd-color">-->
+<!--            <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--{% else %}-->
+<!--    <li class="nav-item">-->
+<!--        <a class="nav-link btn btn-primary my-btn me-3"-->
+<!--           href="{% url 'login' %}">Войти</a>-->
+<!--    </li>-->
+<!--{% endif %}-->
+
+<nav class="navbar navbar-expand-lg fixed ">
+<!--   <a class="navbar-brand" href="{% url 'login' %}">Войти</a>-->
+<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--     <span class="navbar-toggler-icon"></span>-->
+<!--   </button>-->
+    {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                {{ request.user }}
+            </button>
+            <ul class="dropdown-menu dd-color">
+                <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </div>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link btn btn-primary my-btn me-3"
+           href="{% url 'login' %}">Войти</a>
+    </li>
+{% endif %}
 <div class="collapse navbar-collapse " id="navbarSupportedContent">
      <ul class="navbar-nav mr-4">
 
@@ -43,5 +76,6 @@
 
    </div>
 </nav>
+<body>
 </body>
 </html>

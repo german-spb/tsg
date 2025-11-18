@@ -62,3 +62,6 @@
 @media (max-width: 500px) {
   .menu-main li {display: block;}
 }
+nav-link btn btn-primary my-btn me-3{
+ width: 152.22222px;
+}
