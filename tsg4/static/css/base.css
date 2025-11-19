@@ -65,3 +65,14 @@
 nav-link btn btn-primary my-btn me-3{
  width: 152.22222px;
 }
+.btn-group nav-item{
+ float: left;
+}
+
+body {
+   background-image: url('../img/fon2.png');
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: fixed;
+   -webkit-background-size: cover;
+}

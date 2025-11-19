@@ -20,6 +20,7 @@
         </ul>
     </div>
 {% else %}
+   <div class="btn-group">
     <li class="nav-item" style="width: 152.22222px;">
         <a class="nav-link btn btn-primary my-btn me-3"
            href="{% url 'login' %}">Войти</a>
@@ -28,6 +29,7 @@
         <a class="nav-link btn btn-primary my-btn me-3"
            href="{% url 'signup' %}">Регистрация</a>
     </li>
+   </div>
 {% endif %}
 
 <body class="d-flex flex-column h-100">
