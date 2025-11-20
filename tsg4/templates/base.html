@@ -8,7 +8,7 @@
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
-
+<div id="wrapper" >
     {% if user.is_authenticated %}
     <div class="dropdown">
         <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"
@@ -19,34 +19,31 @@
             <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>
         </ul>
     </div>
+
 {% else %}
    <div class="btn-group">
-    <li class="nav-item" style="width: 152.22222px;">
-        <a class="nav-link btn btn-primary my-btn me-3"
-           href="{% url 'login' %}">Войти</a>
-    </li>
-    <li class="nav-item" style="width: 152.22222px;">
-        <a class="nav-link btn btn-primary my-btn me-3"
-           href="{% url 'signup' %}">Регистрация</a>
-    </li>
+        <li class="nav-item" style="width: 152.22222px;">
+            <a class="nav-link btn btn-primary my-btn me-3"
+               href="{% url 'login' %}">Войти</a>
+        </li>
+        <li class="nav-item" style="width: 152.22222px;">
+            <a class="nav-link btn btn-primary my-btn me-3"
+               href="{% url 'signup' %}">Регистрация</a>
+        </li>
    </div>
+
+
+    <div class="fig">
+        <img class="w" src="{% static 'img/45A3.png' %}" align="center" width="500" alt="photo-45A">
+    </div>
+
 {% endif %}
 
-<body class="d-flex flex-column h-100">
-<!--<section class="al mt-3">-->
-<!--    <div class="container justify-content-center">-->
-<!--        <div class="alert alert-dismissible alert-warning">-->
-<!--            <h4 class="alert-heading">Приветствую вас!</h4>-->
-<!--            <h5 class="mb-0">Сайт находится в процессе разработки.<br>-->
-<!--                Следить за процессом разработки и повторять действия, можно в <a href="https://t.me/press_any_button">Telegram-канале-->
-<!--                    "Код на салфетке"</a></h5>-->
 
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
+<body class="d-flex flex-column h-100">
 <script src="{% static "js/bootstrap.bundle.js" %}"></script>
-<!--</body>-->
-<body>
+
+
 
 <nav class="top-menu">
   <ul class="menu-main">
@@ -56,8 +53,9 @@
     <li><a href="">Документы, тарифы</a></li>
   </ul>
 </nav>
-<!--<img class="w" src="{% static "img/45b.jpg" %}" alt="photo">-->
+<h1>ТСЖ "Царскосёл - 4"</h1>
 <!--<footer> <div class="footer-img"> <img src="{% static 'img/45b.jpg' %}" alt=""></div> </footer>-->
+</div>
 </body>
 
 </html>

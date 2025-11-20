@@ -26,6 +26,7 @@
   font-size: 18px;
   text-align: center;
   position: relative;
+
 }
 .menu-main:before,
 .menu-main:after {
@@ -47,15 +48,15 @@
   margin: 2px 5px;
   padding: 6px 15px;
   font-family: 'PT Sans', sans-serif;
-  font-size: 16px;
-  color: #777777;
+  font-size: 18px;
+  color: #004050;
   border-bottom: 1px solid transparent;
   transition: .3s linear;
 }
 .menu-main .current, .menu-main a:hover {
   border-radius: 3px;
   background: #f3ece1;
-  color: #313131;
+  color: #bf4717;
   text-shadow: 0 1px 0 #fff;
   border-color: #c6c6c6;
 }
@@ -65,14 +66,42 @@
 nav-link btn btn-primary my-btn me-3{
  width: 152.22222px;
 }
+
 .btn-group nav-item{
  float: left;
 }
 
+.btn-group{
+ margin-top: 10px;
+ margin-bottom: 10px;
+}
+
+.btn{
+ background-color: #6b6464;
+}
 body {
    background-image: url('../img/fon2.png');
    background-repeat: no-repeat;
    background-position: center center;
    background-attachment: fixed;
    -webkit-background-size: cover;
+}
+
+.fig{
+  text-align: center;
+}
+
+
+h1 {
+    text-align: center;
+    font-size : 30px;
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Cherry Swash', cursive;
+    margin-top: 10px;
+}
+
+#wrapper{
+ margin-left: 10px;
+ margin-right: 10px;
 }
