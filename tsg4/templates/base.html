@@ -34,11 +34,11 @@
 
 
     <div class="fig">
-        <img class="w" src="{% static 'img/45A3.png' %}" align="center" width="500" alt="photo-45A">
+<!--        <img class="w" src="{% static 'img/45A3.png' %}" align="center" width="500" alt="photo-45A">-->
     </div>
 
 {% endif %}
-
+</div>
 
 <body class="d-flex flex-column h-100">
 <script src="{% static "js/bootstrap.bundle.js" %}"></script>
@@ -54,8 +54,26 @@
   </ul>
 </nav>
 <h1>ТСЖ "Царскосёл - 4"</h1>
-<!--<footer> <div class="footer-img"> <img src="{% static 'img/45b.jpg' %}" alt=""></div> </footer>-->
-</div>
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+<!--        <img class="footer-img" src="{% static 'img/pushkin.png' %}" align="center" alt="pushkin">-->
+      <!-- Меню со ссылками -->
+      <nav>
+        <ul class="footer-nav">
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </nav>
+
+      <!-- Блок с контактами -->
+      <ul class="footer-contacts">
+        <li><a href="tel:+7 (812) 309-10-29">Телефон: +7 (812) 309-10-29</a></li>
+        <li><a href="mailto:tsg-cs4@yandex.ru">Email: tsg-cs4@yandex.ru</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
 
 </html>
