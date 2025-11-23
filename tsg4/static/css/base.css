@@ -172,11 +172,12 @@ h1 {
 }
 
 .table {
-	width: 50%;
+	width: 80%;
 	margin-bottom: 20px;
 	border: 1px solid #dddddd;
 	border-collapse: collapse;
 	margin: 0 auto;
+	background-color: #adb5bd;
 }
 .table th {
 	font-weight: bold;
@@ -187,4 +188,6 @@ h1 {
 .table td {
 	border: 1px solid #dddddd;
 	padding: 5px;
+    color: #000;
 }
+
