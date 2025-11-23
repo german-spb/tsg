@@ -105,9 +105,10 @@ h1 {
 }
 
 #wrapper{
- margin-left: 10px;
- margin-right: 10px;
- background-image: url('../img/cloud_2.jpg');
+ margin-left: 0px;
+ margin-right: 0px;
+ margin-top: 5px;
+ background-image: url('../img/cloud_new_1.jpg');
  background-repeat: no-repeat ;
  background-position: 50% 0%;
  padding: 45px 0;
