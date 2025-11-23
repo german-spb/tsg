@@ -63,6 +63,11 @@
 @media (max-width: 500px) {
   .menu-main li {display: block;}
 }
+
+.nav-item {
+ list-style-type: none;
+}
+
 nav-link btn btn-primary my-btn me-3{
  width: 152.22222px;
  list-style: none;
@@ -116,10 +121,11 @@ h1 {
 
 .site-footer {
   background-color: rgb (0 0 0 / 0%); /* прозрачный фон подвала */
-  background-image: url('../img/pushkin_1.png');
+  background-image: url('../img/pushkin-2.png');
   background-repeat: no-repeat ;
   background-position: 50% 0%;
-  padding: 45px 0;          /* Отступ сверху и снизу */
+  padding: 5px 0;          /* Отступ сверху и снизу */
+  margin-top: 50px
 }
 
 .footer-container {
@@ -165,3 +171,20 @@ h1 {
   }
 }
 
+.table {
+	width: 50%;
+	margin-bottom: 20px;
+	border: 1px solid #dddddd;
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+.table th {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #dddddd;
+}
+.table td {
+	border: 1px solid #dddddd;
+	padding: 5px;
+}
