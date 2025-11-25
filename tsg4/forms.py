@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Documents
 
 
 class RegistrationForm(UserCreationForm):
@@ -63,3 +64,12 @@ class LoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
+class DocumentForm (forms.ModelForm):
+    class Meta:
+        model = Documents
+        fields = '__all__'
+        labels = {
+            'title': 'Название документа',
+        }
+

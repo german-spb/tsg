@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpResponse, FileResponse, HttpResponseRedirect, HttpResponseNotFound
 from .forms import RegistrationForm, LoginForm
+from .models import Documents
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.models import User
@@ -35,3 +37,23 @@ class CustomLoginView(LoginView):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+#================== Открыть документ =============================
+def documents(request):
+    docs = Documents.objects.all()
+    # document = docs.documents_set.all()
+    # glues_note = glue.noteglue_set.all()
+    # if request.method == 'POST':
+    #     form = DocumentForm(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         form.save()
+    #         return render(request, 'glue_document.html', {'form': form, 'glues_documents':glues_documents, 'glue':glue, 'glues_note': glues_note})
+    # else:
+    #     form = DocumentForm()
+    return render(request, 'document.html', {'docs': docs})
+
+def document_open(request, filename): #---- вывод изображения PDF документа в браузер
+    return FileResponse(open(f'documents/{filename}', 'rb'), content_type='application/pdf')
+
+def useful_information(request):
+    return render(request, 'useful_information.html')

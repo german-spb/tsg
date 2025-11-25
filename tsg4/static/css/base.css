@@ -126,7 +126,8 @@ h1 {
   background-repeat: no-repeat ;
   background-position: 50% 0%;
   padding: 5px 0;          /* Отступ сверху и снизу */
-  margin-top: 50px
+  margin-top: auto;
+
 }
 
 .footer-container {
@@ -173,12 +174,12 @@ h1 {
 }
 
 .table {
-	width: 80%;
+	width: 60%;
 	margin-bottom: 20px;
-	border: 1px solid #dddddd;
+	border: 0px solid #dddddd;
 	border-collapse: collapse;
 	margin: 0 auto;
-	background-color: #adb5bd;
+	background-color: #006e78;
 }
 .table th {
 	font-weight: bold;
@@ -187,8 +188,8 @@ h1 {
 	border: 1px solid #dddddd;
 }
 .table td {
-	border: 1px solid #dddddd;
+
 	padding: 5px;
-    color: #000;
+    color: #f0f0f0;;
 }
 

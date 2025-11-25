@@ -25,5 +25,8 @@ urlpatterns = [
     path('signup/', views.CustomRegistrationView.as_view(), name='signup'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('logout/', views.logout_view, name='logout'),
+    path('document/', views.documents),
+    path('documents/<str:filename>/', views.document_open),
+    path('useful_information/', views.useful_information),
 
     ]
