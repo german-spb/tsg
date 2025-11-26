@@ -5,9 +5,11 @@
     <title>{% block title %}Царскосел-4 {% endblock%}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "css/base.css" %}" rel="stylesheet">
     <script src="{% static "js/bootstrap.bundle.js" %}"></script>
+
 </head>
 <div id="wrapper" >
     {% if user.is_authenticated %}
@@ -35,6 +37,7 @@
 {% endif %}
 </div>
 <body class="d-flex flex-column h-100">
+    {% block content %}
     <nav class="top-menu">
       <ul class="menu-main">
         <li><a href="/" class="current">Общая информация</a></li>
@@ -43,12 +46,17 @@
         <li><a href="/document">Документы, тарифы</a></li>
       </ul>
     </nav>
+
+
     <h1>ТСЖ "Царскосёл - 4"</h1>
+    {% endblock %}
+
     <table class="table">
             <tbody>
                 <tr>
                     <td>
                         <ul>
+                             {% block content_1 %}
                             <li>
                                 <h3>Адрес регистрации</h3>196606, город Санкт-Петербург, г. Пушкин, улица Генерала Хазова, д. 45А
                             </li>
@@ -76,12 +84,14 @@
                                 К/с 30101810500000000653<br>
                                 БИК 044030653
                             </li>
+                            {% endblock %}
                         </ul>
                      </td>
 
                 </tr>
             </tbody>
     </table>
+
     <footer class="site-footer">
         <div class="footer-container">
       <!-- Меню со ссылками -->
