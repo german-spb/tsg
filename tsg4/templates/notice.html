@@ -14,17 +14,18 @@
 
 {% block content_1 %}
 {% for ad in ads %}
+
     <li style="list-style: none">
-       <h2 style="text-align: center">{{  ad.title }}</h2>
+       <h2 style="text-align: center">{{  ad.title | safe }}</h2>
     </li>
     <li style="list-style: none">
-        {{ ad.content }}
+        <span>Дата: </span>{{ ad.date_created | safe}}
     </li>
     <li style="list-style: none">
-        <span>Дата: </span>{{ ad.date_created }}
+        {{ ad.content | safe}}
     </li>
     <li style="list-style: none">
-        <span>======================================</span>
-    </li>
+        <span>=====================================================================</span>
+    </li><br>
 {% endfor %}
 {% endblock %}

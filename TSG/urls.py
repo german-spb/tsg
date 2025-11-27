@@ -14,9 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import path
+from django.urls import path, include
 from tsg4 import views
 
 urlpatterns = [
@@ -29,5 +30,7 @@ urlpatterns = [
     path('documents/<str:filename>/', views.document_open),
     path('useful_information/', views.useful_information),
     path('notice/', views.notice),
+    path('froala_editor/', include('froala_editor.urls')),
+
 
     ]
