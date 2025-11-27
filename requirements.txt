@@ -1,0 +1,11 @@
+asgiref==3.10.0
+Django==5.2.8
+django-ckeditor-5==0.2.18
+django-froala-editor==4.7.1
+django-tinymce==5.0.0
+include==0.2.2
+pillow==12.0.0
+psycopg==3.2.12
+python-dotenv==1.2.1
+sqlparse==0.5.3
+typing_extensions==4.15.0
