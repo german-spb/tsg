@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, FileResponse, HttpResponseRedirect, HttpResponseNotFound
 from .forms import RegistrationForm, LoginForm
-from .models import Documents
+from .models import Documents, Entry
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.models import User
@@ -57,3 +57,9 @@ def document_open(request, filename): #---- вывод изображения PD
 
 def useful_information(request):
     return render(request, 'useful_information.html')
+
+#======================= Объявления ============================
+
+def notice(request):
+    ads = Entry.objects.all()
+    return render(request, 'notice.html', {'ads': ads})

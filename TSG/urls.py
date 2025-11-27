@@ -28,5 +28,6 @@ urlpatterns = [
     path('document/', views.documents),
     path('documents/<str:filename>/', views.document_open),
     path('useful_information/', views.useful_information),
+    path('notice/', views.notice),
 
     ]

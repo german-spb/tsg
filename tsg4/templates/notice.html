@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Объявления | {{ block.super }}{% endblock %}
+{% block content %}
+ <nav class="top-menu">
+      <ul class="menu-main">
+        <li><a href="/" >Общая информация</a></li>
+        <li><a href="/notice" class="current">Объявления, новости </a></li>
+        <li><a href="/useful_information">Полезная информация</a></li>
+        <li><a href="/document">Документы, тарифы</a></li>
+      </ul>
+    </nav>
+<h1>Объявления, новости</h1>
+{% endblock %}
+
+{% block content_1 %}
+{% for ad in ads %}
+    <li style="list-style: none">
+       <h2 style="text-align: center">{{  ad.title }}</h2>
+    </li>
+    <li style="list-style: none">
+        {{ ad.content }}
+    </li>
+    <li style="list-style: none">
+        <span>Дата: </span>{{ ad.date_created }}
+    </li>
+    <li style="list-style: none">
+        <span>======================================</span>
+    </li>
+{% endfor %}
+{% endblock %}

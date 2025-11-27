@@ -41,13 +41,11 @@
     <nav class="top-menu">
       <ul class="menu-main">
         <li><a href="/" class="current">Общая информация</a></li>
-        <li><a href="#">Объявления, новости</a></li>
+        <li><a href="/notice">Объявления, новости</a></li>
         <li><a href="/useful_information">Полезная информация</a></li>
         <li><a href="/document">Документы, тарифы</a></li>
       </ul>
     </nav>
-
-
     <h1>ТСЖ "Царскосёл - 4"</h1>
     {% endblock %}
 
@@ -91,23 +89,12 @@
                 </tr>
             </tbody>
     </table>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-      <!-- Меню со ссылками -->
-          <nav>
-            <ul class="footer-nav">
-              <li><a href="#">Контакты:</a></li>
-              <li><a href="#"></a></li>
-            </ul>
-          </nav>
-      <!-- Блок с контактами -->
-            <ul class="footer-contacts">
-                <li><a href="tel:+7 (812) 309-10-29">Телефон: +7 (812) 309-10-29</a></li>
-                <li><a href="mailto:tsg-cs4@yandex.ru">Email: tsg-cs4@yandex.ru</a></li>
-            </ul>
-        </div>
-
-  </footer>
+    {% block footer %}
+    <footer class="fixed-footer">
+        <img src="/static/img/pushkin_g.png" alt="Герб">
+        <span>г. Пушкин</span><br>
+        <span>&copy; 2025 ТСЖ Царскосёл - 4</span>
+    </footer>
+    {% endblock %}
 </body>
 </html>
