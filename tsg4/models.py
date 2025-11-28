@@ -13,7 +13,7 @@ class Documents(models.Model):
 class Entry(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    date_created = models.DateTimeField(default=timezone.now)
+    date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
