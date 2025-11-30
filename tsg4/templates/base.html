@@ -2,14 +2,13 @@
 {% load static %}
 <html lang="ru" data-bs-theme="dark" class="h-100">
 <head>
-    <title>{% block title %}Царскосел-4 {% endblock%}</title>
+    <title>{% block title %}ТСЖ "Царскосёл-4" | г. Пушкин{% endblock%}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" />
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "css/base.css" %}" rel="stylesheet">
     <script src="{% static "js/bootstrap.bundle.js" %}"></script>
-
 </head>
 <div id="wrapper" >
     {% if user.is_authenticated %}
@@ -26,8 +25,7 @@
 {% else %}
    <div class="btn-group">
         <li class="nav-item" style="width: 152.22222px;">
-            <a class="nav-link btn btn-primary my-btn me-3"
-               href="{% url 'login' %}">Войти</a>
+            <a class="nav-link btn btn-primary my-btn me-3" href="{% url 'login' %}">Войти</a>
         </li>
         <li class="nav-item" style="width: 152.22222px;">
             <a class="nav-link btn btn-primary my-btn me-3"
@@ -46,16 +44,14 @@
         <li><a href="/document">Документы, тарифы</a></li>
       </ul>
     </nav>
-    <h1>ТСЖ "Царскосёл - 4"</h1>
+<h1>ТСЖ "Царскосёл - 4"</h1>
     {% endblock %}
-
     <table class="table">
             <tbody>
                 <tr>
+                    {% block content_1 %}
                     <td>
-                           {% block content_1 %}
                         <ul>
-
                             <li>
                                 <h3>Адрес регистрации</h3>196606, город Санкт-Петербург, г. Пушкин, улица Генерала Хазова, д. 45А
                             </li>
@@ -83,11 +79,9 @@
                                 К/с 30101810500000000653<br>
                                 БИК 044030653
                             </li>
-
                         </ul>
-                        {% endblock %}
                      </td>
-
+                {% endblock %}
                 </tr>
             </tbody>
     </table>

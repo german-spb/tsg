@@ -41,15 +41,6 @@ def logout_view(request):
 #================== Открыть документ =============================
 def documents(request):
     docs = Documents.objects.all()
-    # document = docs.documents_set.all()
-    # glues_note = glue.noteglue_set.all()
-    # if request.method == 'POST':
-    #     form = DocumentForm(request.POST, request.FILES)
-    #     if form.is_valid():
-    #         form.save()
-    #         return render(request, 'glue_document.html', {'form': form, 'glues_documents':glues_documents, 'glue':glue, 'glues_note': glues_note})
-    # else:
-    #     form = DocumentForm()
     return render(request, 'document.html', {'docs': docs})
 
 def document_open(request, filename): #---- вывод изображения PDF документа в браузер
