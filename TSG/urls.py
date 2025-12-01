@@ -31,6 +31,7 @@ urlpatterns = [
     path('useful_information/', views.useful_information),
     path('notice/', views.notice),
     path('froala_editor/', include('froala_editor.urls')),
-
+    path('summernote/', include('django_summernote.urls')),
+    path('create_post/', views.create_post),
 
     ]

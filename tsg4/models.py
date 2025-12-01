@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django_summernote.fields import SummernoteTextField
 
 
 class Documents(models.Model):
@@ -20,3 +21,10 @@ class Entry(models.Model):
 
     class Meta:
         verbose_name_plural = "Entries"
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=250)
+    content = SummernoteTextField()
+
+    def __str__(self):
+        return self.title

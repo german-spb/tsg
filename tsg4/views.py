@@ -1,13 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, FileResponse, HttpResponseRedirect, HttpResponseNotFound
-from .forms import RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, BlogPostForm
 from .models import Documents, Entry
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
-from django.shortcuts import redirect
+
 
 
 def index(request):
@@ -54,3 +54,14 @@ def useful_information(request):
 def notice(request):
     ads = Entry.objects.all()
     return render(request, 'notice.html', {'ads': ads})
+
+#================ Создание поста ============================
+def create_post(request):
+    if request.method == 'POST':
+        form = BlogPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('blog-list')  # Replace with your url name
+    else:
+        form = BlogPostForm()
+    return render(request, 'create_post.html', {'form': form})

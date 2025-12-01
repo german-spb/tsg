@@ -2,7 +2,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Documents
+from .models import Documents, BlogPost
+from django_summernote.widgets import SummernoteWidget
 
 
 class RegistrationForm(UserCreationForm):
@@ -73,3 +74,14 @@ class DocumentForm (forms.ModelForm):
             'title': 'Название документа',
         }
 
+class BlogPostForm(forms.ModelForm):
+    class Meta:
+        model = BlogPost
+        fields = ['title', 'content']
+        labels = {
+            'title': 'Тема сообщения:',
+            'content': 'Текс сообщения:'
+        }
+        widgets = {
+            'content': SummernoteWidget(),
+        }
