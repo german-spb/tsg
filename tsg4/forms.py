@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import Documents, BlogPost
 from django_summernote.widgets import SummernoteWidget
+import bleach
+from bleach.css_sanitizer import CSSSanitizer
+from django_summernote.settings import ALLOWED_TAGS, ATTRIBUTES
 
 
 class RegistrationForm(UserCreationForm):
@@ -77,7 +80,7 @@ class DocumentForm (forms.ModelForm):
 class BlogPostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['title', 'content']
+        fields = ['author','title', 'content',]
         labels = {
             'title': 'Тема сообщения:',
             'content': 'Текс сообщения:'

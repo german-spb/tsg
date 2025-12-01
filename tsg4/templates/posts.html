@@ -1,30 +1,34 @@
 {% extends "base.html" %}
 {% block title %}Объявления, новости | {{ block.super }}{% endblock %}
+{{ form.media }}
 {% block content %}
  <nav class="top-menu">
       <ul class="menu-main">
         <li><a href="/" >Общая информация</a></li>
-        <li><a href="/notice" class="current">Объявления</a></li>
+        <li><a href="/notice">Объявления</a></li>
         <li><a href="/useful_information">Полезная информация</a></li>
         <li><a href="/document">Документы</a></li>
-        <li><a href="/create_post">Предложения</a></li>
+        <li><a href="/posts" class="current">Предложения</a></li>
       </ul>
  </nav>
-<h1>Объявления, новости</h1>
+<h1>Предложения собственников</h1>
 {% endblock %}
 {% block content_1 %}
      <tr>
         <td>
             <ul>
-                {% for ad in ads %}
+                {% for post in posts %}
                 <li style="list-style: none">
-                    <h2 style="text-align: center">{{ ad.title | safe }}</h2>
-                </li>
-                <li style="list-style: none; color: rgb(210 225 14);">
-                    <span>Дата: </span>{{ ad.date_created | date:"d.m.Y" | safe}}
+                    <h4 style="text-align: left">{{ post.title | safe }}</h4>
                 </li>
                 <li style="list-style: none">
-                    {{ ad.content | safe}}
+                    {{ post.content | safe}}
+                </li>
+                 <li style="list-style: none">
+                    {{ post.author | safe}}
+                </li>
+                 <li style="list-style: none; color: rgb(210 225 14);">
+                    <span>Дата: </span>{{ post.date_created | date:"d.m.Y" | safe}}
                 </li>
                 <li style="list-style: none">
                     <span style="width: 100%">================================================================</span>
@@ -34,4 +38,3 @@
         </td>
     </tr>
 {% endblock %}
-

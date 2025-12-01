@@ -33,5 +33,6 @@ urlpatterns = [
     path('froala_editor/', include('froala_editor.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('create_post/', views.create_post),
+    path('posts/', views.posts),
 
     ]
