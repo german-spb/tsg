@@ -42,12 +42,12 @@
         <li><a href="/notice">Объявления</a></li>
         <li><a href="/useful_information">Полезная информация</a></li>
         <li><a href="/document">Документы</a></li>
-        <li><a href="/create_post" class="current">Предложения</a></li>
+        <li><a href="/posts" class="current">Предложения</a></li>
       </ul>
     </nav>
   <h1>Предложения собственников</h1>
     <div class="form-container">
-        <form method="post">
+        <form method="post" action="create_post/">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>

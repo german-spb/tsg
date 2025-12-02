@@ -58,17 +58,22 @@ def notice(request):
     return render(request, 'notice.html', {'ads': ads})
 
 #================ Создание поста ============================
-@login_required
-def create_post(request):
-    if request.method == 'POST':
-        form = BlogPostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')  # Replace with your url name
-    else:
-        form = BlogPostForm()
+
+def input_post(request):
+    form = BlogPostForm()
     return render(request, 'create_post.html', {'form': form})
 
+
+@login_required
+def create_post(request):
+    title = request.POST.get('title')
+    content = request.POST.get('content')
+    author = request.user
+    post = BlogPost(author= author, title= title, content=content )
+    post.save()
+    post.instance = None
+    return redirect('posts')
+
 def posts(request):
-    posts = BlogPost.objects.all()
+    posts = BlogPost.objects.all().order_by('-date_created')
     return render(request, 'posts.html', {'posts': posts})
