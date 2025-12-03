@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tinymce',
     'django_summernote',
+    'django_recaptcha',
 
     'tsg4',
 ]
@@ -140,4 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+RECAPTCHA_PUBLIC_KEY = "6Ldu7h8sAAAAAHY17CCI0ReHJAGs_Dlcwd7pBATQ"
+RECAPTCHA_PRIVATE_KEY = "6Ldu7h8sAAAAAH9wVxB8MeqSo9_fl2MWocfF_H-x"

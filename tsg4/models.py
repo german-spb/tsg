@@ -25,7 +25,7 @@ class Entry(models.Model):
 
 class BlogPost(models.Model):
     author = models.ForeignKey(User, related_name="posts", on_delete=models.CASCADE)
-    title = models.CharField(max_length=250)
+    title = models.CharField(max_length=500)
     content = SummernoteTextField()
     date_created = models.DateTimeField(auto_now_add=True)
 

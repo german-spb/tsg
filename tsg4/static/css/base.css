@@ -71,6 +71,7 @@
 nav-link btn btn-primary my-btn me-3{
      width: 152.22222px;
      list-style: none;
+
 }
 
 .btn-group nav-item{
@@ -84,6 +85,7 @@ nav-link btn btn-primary my-btn me-3{
 
 .btn{
     background-color: #6b6464;
+     margin-left: 20px;
 }
 body {
    background-image: url('../img/fon2.png');

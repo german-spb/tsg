@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import Documents, BlogPost
 from django_summernote.widgets import SummernoteWidget
+from django_recaptcha.fields import ReCaptchaField
+
+
+
 
 
 class RegistrationForm(UserCreationForm):
@@ -37,6 +41,7 @@ class RegistrationForm(UserCreationForm):
             'placeholder': 'Повторите пароль'
         })
     )
+    # captcha = ReCaptchaField() включить в продакшн
 
     class Meta:
         model = User
