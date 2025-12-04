@@ -36,8 +36,9 @@ urlpatterns = [
     path('input_post/create_post/', views.create_post),
     path('input_post/', views.input_post, name='add_post'),
     path('posts/', views.posts, name='posts'),
+    path('posts_user/', views.all_posts_user, name='posts_user'),
     path('post/<int:pk>/', views.PostDetailView.as_view(), name='post-detail'),
-    path('post/<int:pk>/update/', views.PostUpdateView.as_view(), name='post-update'),
+    path('post/<int:pk>/update/', views.PostUpdateView.as_view(success_url="/posts/"), name='post-update'),
     path('post/<int:pk>/delete/', views.PostDeleteView.as_view(), name='post-delete'),
 
     ]

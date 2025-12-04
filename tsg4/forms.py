@@ -13,18 +13,27 @@ from django_recaptcha.fields import ReCaptchaField
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(
         max_length=150,
-        label='Имя пользователя',
+        label='Имя пользователя / Ник',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Введите имя пользователя'
         })
     )
     email = forms.EmailField(
+
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
             'placeholder': 'Введите email'
         })
     )
+
+    def clean_email(self) -> str:
+        """Проверяет, что email уникален."""
+        email: str = self.cleaned_data.get('email')
+        if User.objects.filter(email__iexact=email).exists():  # iexact для регистронезависимого поиска
+            raise forms.ValidationError("Пользователь с таким email уже существует.")
+        return email
+
     password1 = forms.CharField(
         max_length=128,
         label='Пароль',

@@ -86,6 +86,10 @@ def posts(request):
     posts = BlogPost.objects.all().order_by('-date_created')
     return render(request, 'posts.html', {'posts': posts})
 
+def all_posts_user(request):
+    posts = BlogPost.objects.filter(author=request.user).order_by('-date_created')
+    return render(request, 'all_posts_user.html', {'posts': posts})
+
 class PostDetailView(DetailView):
     model = BlogPost
     template_name = 'post_detail.html'
@@ -93,6 +97,7 @@ class PostDetailView(DetailView):
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = BlogPost
     fields = ['title', 'content']
+    template_name = 'update_post.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
