@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, FileResponse, HttpResponseRedirect, HttpResponseNotFound
-from .forms import RegistrationForm, LoginForm, BlogPostForm
-from .models import Documents, Entry, BlogPost
+from .forms import RegistrationForm, LoginForm, BlogPostForm, CommentForm
+from .models import Documents, Entry, BlogPost, Comment
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.models import User
@@ -90,12 +90,11 @@ def all_posts_user(request):
     posts = BlogPost.objects.filter(author=request.user).order_by('-date_created')
     return render(request, 'all_posts_user.html', {'posts': posts})
 
-class PostDetailView(DetailView):
-    model = BlogPost
-    template_name = 'post_detail.html'
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = BlogPost
+    form = BlogPostForm()
     fields = ['title', 'content']
     template_name = 'update_post.html'
 
@@ -112,10 +111,30 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = BlogPost
-    success_url = '/'
+    template_name = 'post_confirm_delete.html'
 
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
             return True
         return False
+
+# class PostDetailView(DetailView):
+#     model = BlogPost
+#     template_name = 'post_detail.html'
+
+def post_detail( request, pk):
+    post = get_object_or_404(BlogPost, pk=pk)
+    comments = post.comments.all().order_by('-created_at')
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user # Предполагаем, что пользователь залогинен
+            comment.save()
+            return redirect('post-detail', pk=pk)
+
+    else:
+        form = CommentForm()
+    return render(request, 'post_detail.html', {'post': post, 'comments': comments, 'form': form})

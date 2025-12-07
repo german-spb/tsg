@@ -47,7 +47,7 @@
     </nav>
   <h1>Редактирование поста</h1>
     <div class="form-container">
-        <form method="post" action="">
+        <form method="post" >
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>

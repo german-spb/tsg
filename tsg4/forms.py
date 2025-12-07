@@ -2,7 +2,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Documents, BlogPost
+from tinymce.widgets import TinyMCE
+
+from .models import Documents, BlogPost, Comment
 from django_summernote.widgets import SummernoteWidget
 from django_recaptcha.fields import ReCaptchaField
 
@@ -88,18 +90,29 @@ class DocumentForm (forms.ModelForm):
             'title': 'Название документа',
         }
 
-# class BlogPostForm(forms.ModelForm):
-#     class Meta:
-#         model = BlogPost
-#         fields = ['title', 'content',]
-#         labels = {
-#             'title': 'Тема сообщения:',
-#             'content': 'Текс сообщения:'
-#         }
-#         widgets = {
-#             'content': SummernoteWidget(),
-#         }
-#
-class BlogPostForm(forms.Form):
-    title = forms.CharField(label='Тема предложения')
-    content = forms.CharField(label='Содержание', widget=SummernoteWidget)
+class BlogPostForm(forms.ModelForm):
+    class Meta:
+        model = BlogPost
+        fields = ['title', 'content',]
+        labels = {
+            'title': 'Тема сообщения:',
+            'content': 'Текст сообщения:'
+        }
+        widgets = {
+            # 'content': SummernoteWidget(),
+            'content': TinyMCE(attrs={'cols': 80, 'rows': 30})
+        }
+
+
+# class BlogPostForm(forms.Form):
+#     title = forms.CharField(label='Тема предложения')
+#     content = forms.CharField(label='Содержание', widget= TinyMCE(attrs={'cols': 80, 'rows': 30}))
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text'] # Или ['author', 'text'] если автор не заполняется автоматически
+        widgets = {
+            'text': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Ваш комментарий'}),
+        }
+        # widget=SummernoteWidget
