@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from tinymce.widgets import TinyMCE
+from django_summernote.admin import SummernoteModelAdmin
 from .models import Documents, Entry, BlogPost, Comment
 
 admin.site.register(Documents)
@@ -19,10 +20,16 @@ class EntryAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('post','author', 'text', 'created_at')
 
-@admin.register(BlogPost)
-class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('author','title', 'content', 'date_created')
+# @admin.register(BlogPost)
+# class BlogPostAdmin(admin.ModelAdmin):
+#     list_display = ('author','title', 'content', 'date_created')
+#
+#     formfield_overrides = {
+#         models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
+#     }
 
-    formfield_overrides = {
-        models.TextField: {'widget': TinyMCE(attrs={'cols': 80, 'rows': 30})},
-    }
+class BlogPostAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
+    summernote_fields = ('content',)
+
+admin.site.register(BlogPost, BlogPostAdmin)
+

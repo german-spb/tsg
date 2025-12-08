@@ -49,7 +49,7 @@
     <div class="form-container">
         <form method="post" action="create_post/">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form.as_p | safe }}
             <button type="submit">Submit</button>
         </form>
     </div>

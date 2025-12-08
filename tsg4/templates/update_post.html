@@ -3,7 +3,7 @@
 <html lang="ru" data-bs-theme="dark" class="h-100">
 <head>
     <title>{% block title %}ТСЖ "Царскосёл-4" | г. Пушкин{% endblock%}</title>
-       {{ form.media }}
+ {{ form.media }}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'img/favicon.ico' %}" />
@@ -49,7 +49,7 @@
     <div class="form-container">
         <form method="post" >
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form.as_p | safe }}
             <button type="submit">Submit</button>
         </form>
     </div>

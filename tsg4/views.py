@@ -94,7 +94,6 @@ def all_posts_user(request):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = BlogPost
-    form = BlogPostForm()
     fields = ['title', 'content']
     template_name = 'update_post.html'
 

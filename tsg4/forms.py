@@ -6,6 +6,7 @@ from tinymce.widgets import TinyMCE
 
 from .models import Documents, BlogPost, Comment
 from django_summernote.widgets import SummernoteWidget
+from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
 from django_recaptcha.fields import ReCaptchaField
 
 
@@ -99,14 +100,17 @@ class BlogPostForm(forms.ModelForm):
             'content': 'Текст сообщения:'
         }
         widgets = {
-            # 'content': SummernoteWidget(),
-            'content': TinyMCE(attrs={'cols': 80, 'rows': 30})
+            'content': SummernoteWidget(),
+
         }
 
 
 # class BlogPostForm(forms.Form):
 #     title = forms.CharField(label='Тема предложения')
 #     content = forms.CharField(label='Содержание', widget= TinyMCE(attrs={'cols': 80, 'rows': 30}))
+
+
+
 
 class CommentForm(forms.ModelForm):
     class Meta:
