@@ -18,7 +18,6 @@ from django.views.generic import (
 )
 
 
-
 def index(request):
     return render(request, 'base.html')
 
@@ -67,20 +66,17 @@ def notice(request):
 
 #================ Создание поста ============================
 
-def input_post(request):
-    form = BlogPostForm()
-    return render(request, 'create_post.html', {'form': form})
+class PostCreateView(CreateView):
+    model = BlogPost
+    form_class = BlogPostForm
+    template_name = 'create_post.html'
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.author = self.request.user
+        self.object.save()
+        return super(PostCreateView, self).form_valid(form)
 
-@login_required
-def create_post(request):
-    title = request.POST.get('title')
-    content = request.POST.get('content')
-    author = request.user
-    post = BlogPost(author= author, title= title, content=content )
-    post.save()
-    post.instance = None
-    return redirect('posts')
 
 def posts(request):
     posts = BlogPost.objects.all().order_by('-date_created')
@@ -94,7 +90,7 @@ def all_posts_user(request):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = BlogPost
-    form_class = BlogPostForm
+    form_class = BlogPostForm # для работы редактора summernote
     # fields = ['title', 'content']
     template_name = 'update_post.html'
 
@@ -108,20 +104,6 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
-
-class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = BlogPost
-    template_name = 'post_confirm_delete.html'
-
-    def test_func(self):
-        post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
-
-# class PostDetailView(DetailView):
-#     model = BlogPost
-#     template_name = 'post_detail.html'
 
 def post_detail( request, pk):
     post = get_object_or_404(BlogPost, pk=pk)
@@ -138,3 +120,14 @@ def post_detail( request, pk):
     else:
         form = CommentForm()
     return render(request, 'post_detail.html', {'post': post, 'comments': comments, 'form': form})
+
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = BlogPost
+    template_name = 'post_confirm_delete.html'
+
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False

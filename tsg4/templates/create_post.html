@@ -47,7 +47,7 @@
     </nav>
   <h1>Предложения собственников</h1>
     <div class="form-container">
-        <form method="post" action="create_post/">
+        <form method="post" >
             {% csrf_token %}
             {{ form.as_p | safe }}
             <button type="submit">Submit</button>

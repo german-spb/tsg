@@ -11,9 +11,12 @@
     <script src="{% static "js/bootstrap.bundle.js" %}"></script>
     <link href="{% static 'django_summernote/summernote.css' %}" rel="stylesheet">
     <script src="code.jquery.com"></script>
-    <script src="{% static 'django_summernote/summernote.min.js' %}"></script
+    <script src="{% static 'django_summernote/summernote.min.js' %}"></script>
+    <!--<script src="https://www.expertplus.ru/UserFiles/Image/content/new_year/09.js"></script> -- Снежинки -->
+
 </head>
 <div id="wrapper" >
+
     {% if user.is_authenticated %}
     <div class="dropdown">
         <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"
@@ -21,7 +24,7 @@
             {{ request.user }}
         </button>
         <ul class="dropdown-menu dd-color">
-            <li><a class="dropdown-item dd-item-color" href="{% url 'add_post' %}">Добавить пост</a></li>
+            <li><a class="dropdown-item dd-item-color" href="{% url 'post-create' %}">Добавить пост</a></li>
             <li><a class="dropdown-item dd-item-color" href="{% url 'posts_user' %}">Все ваши посты</a></li>
             <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>
         </ul>
@@ -50,7 +53,8 @@
         <li><a href="/posts">Предложения</a></li>
       </ul>
     </nav>
-<h1>ТСЖ "Царскосёл - 4"</h1>
+
+ <h1>ТСЖ "Царскосёл - 4"</h1>
     {% endblock %}
     <table class="table">
             <tbody>
@@ -91,6 +95,7 @@
                 </tr>
             </tbody>
     </table>
+
     {% block footer %}
     <footer class="fixed-footer">
         <img src="/static/img/pushkin_g.png" alt="Герб">
@@ -98,6 +103,7 @@
         <span>&copy; 2025 ТСЖ Царскосёл - 4</span>
     </footer>
     {% endblock %}
+<div class="averin_newyear"></div> <!--Новогодние подарки внизу сайта-->
 </body>
 </html>
 

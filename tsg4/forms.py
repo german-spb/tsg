@@ -10,13 +10,10 @@ from django_summernote.fields import SummernoteTextFormField, SummernoteTextFiel
 from django_recaptcha.fields import ReCaptchaField
 
 
-
-
-
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(
         max_length=150,
-        label='Имя пользователя / Ник',
+        label='Имя пользователя / Ник / Квартира-...',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Введите имя пользователя'
