@@ -26,7 +26,7 @@
                 <li style="list-style: none">
                     <h4><a class="article-title" href="{% url 'post-detail' post.id %}" style="text-decoration: none" >{{ post.title | safe}}</a></h4>
                 </li>
-                <li style="list-style: none; clip-path: inset(0 0 20% 0);"> <!-- обрезание текста -->
+                <li style="list-style: none; clip-path: inset(0 0 0 0);"> <!-- обрезание текста -->
                     {{ post.content | safe }}
                 </li>
                 <li style="list-style: none; font-style: italic;">

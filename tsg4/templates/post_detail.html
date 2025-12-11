@@ -47,8 +47,17 @@
         <ul>
             <li>
                 <div>
-                        <h5>Комментарии</h5>
+                        <h6>Комментарии:</h6>
+                    {% if user.is_authenticated %}
+<!--                        <h5>Добавить комментарий</h5>-->
+                            <form method="post" >
+                                {% csrf_token %}
+                                {{ form.text }}
+                                <button type="submit">Отправить</button>
+                            </form>
+                    {% endif %}
                         {% for comment in comments %}
+
                            <div>
                                 <p style="margin-bottom: 0px;"><strong>{{ comment.author.username }}:</strong><br>{{ comment.text }}</p>
                                 <small>{{ comment.created_at }}</small>
@@ -57,14 +66,7 @@
                             {% empty %}
                             <p>Комментариев пока нет.</p>
                         {% endfor %}
-                    {% if user.is_authenticated %}
-                        <h5>Добавить комментарий</h5>
-                            <form method="post" >
-                                {% csrf_token %}
-                                {{ form.text }}
-                                <button type="submit">Отправить</button>
-                            </form>
-                    {% endif %}
+
                 </div>
              </li>
         </ul>
