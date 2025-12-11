@@ -53,7 +53,7 @@ def documents(request):
 
 @login_required
 def document_open(request, filename): #---- вывод изображения PDF документа в браузер
-    return FileResponse(open(f'documents/{filename}', 'rb'), content_type='application/pdf')
+    return FileResponse(open(f'media/documents/{filename}', 'rb'), content_type='application/pdf')
 
 def useful_information(request):
     return render(request, 'useful_information.html')

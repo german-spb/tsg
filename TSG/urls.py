@@ -19,6 +19,11 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from tsg4 import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import re_path
+from django.views.static import serve
+
 
 
 urlpatterns = [
@@ -42,5 +47,9 @@ urlpatterns = [
     path('post/<int:pk>/', views.post_detail, name='post-detail'),
     path('post/<int:pk>/update/', views.PostUpdateView.as_view(success_url="/posts/"), name='post-update'),
     path('post/<int:pk>/delete/', views.PostDeleteView.as_view(success_url="/posts_user/"), name='post-delete'),
+    re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
+    re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 
     ]
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
