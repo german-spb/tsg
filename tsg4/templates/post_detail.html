@@ -1,15 +1,15 @@
 {% extends "base.html" %}
+{% block title %}Предложения, пожелания собственников | {{ post.title | safe }}{% endblock %}
 {% block content %}
-
-<nav class="top-menu" xmlns="http://www.w3.org/1999/html">
-      <ul class="menu-main">
-        <li><a href="/" >Общая информация</a></li>
-        <li><a href="/notice">Объявления</a></li>
-        <li><a href="/useful_information">Полезная информация</a></li>
-        <li><a href="/document">Документы</a></li>
-        <li><a href="/posts" class="current">Предложения</a></li>
-      </ul>
- </nav>
+    <nav class="top-menu" xmlns="http://www.w3.org/1999/html">
+          <ul class="menu-main">
+            <li><a href="/" >Общая информация</a></li>
+            <li><a href="/notice">Объявления</a></li>
+            <li><a href="/useful_information">Полезная информация</a></li>
+            <li><a href="/document">Документы</a></li>
+            <li><a href="/posts" class="current">Предложения</a></li>
+          </ul>
+     </nav>
 <h1>Предложения, пожелания собственников</h1>
 {% endblock %}
 
@@ -21,20 +21,20 @@
                      <article class="media content-section">
                             <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
                             <div class="media-body">
-                              <div class="article-metadata">
-                                <small class="text-muted">{{ post.date_created|date:"F d, Y" }}</small><br>
-                                <a class="mr-2" href="#">{{ post.author }}</a>
+                                  <div class="article-metadata">
+                                    <small class="text-muted">{{ post.date_created|date:"F d, Y" }}</small><br>
+                                    <a class="mr-2" href="#">{{ post.author }}</a>
 
-                                {% if post.author == user %}
-                                  <div>
-                                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Редактировать</a>
-                                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.id %}">Удалить</a>
+                                    {% if post.author == user %}
+                                      <div>
+                                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Редактировать</a>
+                                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.id %}">Удалить</a>
+                                      </div>
+                                    {% endif %}
                                   </div>
-                                {% endif %}
-                              </div>
-                              <h2 class="article-title">{{ post.title | safe }}</h2>
-                              <p class="article-content">{{ post.content | safe }}</p>
-                              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'posts' %}">Назад</a><br>
+                                  <h2 class="article-title">{{ post.title | safe }}</h2>
+                                  <p class="article-content">{{ post.content | safe }}</p>
+                                  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'posts' %}">Назад</a><br>
 
                             </div>
                      </article>
@@ -49,23 +49,21 @@
                 <div>
                         <h6>Комментарии:</h6>
                     {% if user.is_authenticated %}
-<!--                        <h5>Добавить комментарий</h5>-->
                             <form method="post" >
                                 {% csrf_token %}
                                 {{ form.text }}
                                 <button type="submit">Отправить</button>
                             </form>
                     {% endif %}
-                        {% for comment in comments %}
-
+                    {% for comment in comments %}
                            <div>
                                 <p style="margin-bottom: 0px;"><strong>{{ comment.author.username }}:</strong><br>{{ comment.text }}</p>
                                 <small>{{ comment.created_at }}</small>
-                            </div>
+                           </div>
                             <span style="width: 100%">------------------------------------------------</span>
                             {% empty %}
                             <p>Комментариев пока нет.</p>
-                        {% endfor %}
+                    {% endfor %}
 
                 </div>
              </li>

@@ -101,14 +101,6 @@ class BlogPostForm(forms.ModelForm):
 
         }
 
-
-# class BlogPostForm(forms.Form):
-#     title = forms.CharField(label='Тема предложения')
-#     content = forms.CharField(label='Содержание', widget= TinyMCE(attrs={'cols': 80, 'rows': 30}))
-
-
-
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -116,4 +108,4 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'text': forms.TextInput(attrs={'class': 'formControl', 'placeholder': 'Ваш комментарий'}),
         }
-        # widget=SummernoteWidget
+

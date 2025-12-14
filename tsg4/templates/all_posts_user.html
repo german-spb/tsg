@@ -1,7 +1,46 @@
-{% extends "base.html" %}
-{% block title %}Объявления, новости | {{ block.super }}{% endblock %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru" data-bs-theme="dark" class="h-100">
+<head>
+    <title>Предложения, пожелания собственника {{ request.user }} | ТСЖ "Царскосёл-4"</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" />
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <!--<link href="{% static "css/posts.css" %}" rel="stylesheet">-->
+    <script src="{% static "js/bootstrap.bundle.js" %}"></script>
+</head>
+        <div id="wrapper" style="margin-top: 0px;" >
+
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+                <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ request.user }}
+                </button>
+                <ul class="dropdown-menu dd-color">
+                    <li><a class="dropdown-item dd-item-color" href="{% url 'post-create' %}">Добавить пост</a></li>
+                    <li><a class="dropdown-item dd-item-color" href="{% url 'posts_user' %}">Все ваши посты</a></li>
+                    <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>
+                </ul>
+            </div>
+
+            {% else %}
+               <div class="btn-group">
+                    <li class="nav-item" style="width: 152.22222px;">
+                        <a class="nav-link btn btn-primary my-btn me-3" href="{% url 'login' %}">Войти</a>
+                    </li>
+                    <li class="nav-item" style="width: 152.22222px;">
+                        <a class="nav-link btn btn-primary my-btn me-3"
+                           href="{% url 'signup' %}">Регистрация</a>
+                    </li>
+               </div>
+            {% endif %}
+        </div>
+<body>
 {{ form.media }}
-{% block content %}
+
  <nav class="top-menu">
       <ul class="menu-main">
         <li><a href="/" >Общая информация</a></li>
@@ -12,31 +51,44 @@
       </ul>
  </nav>
 <h1>Предложения, пожелания собственников</h1>
-{% endblock %}
-{% block content_1 %}
-     <tr>
-        <td>
-            <ul>
-                {% for post in posts %}
-                <li style="list-style: none; color: rgb(210 225 14);">
-                    <span>Дата: </span>{{ post.date_created | date:"d.m.Y" | safe}}
-                </li>
-                <li style="list-style: none">
-                    <h4><a class="article-title" href="{% url 'post-detail' post.id %}" style="text-decoration: none" >{{ post.title }}</a></h4>
-                </li>
-                <li style="list-style: none">
-                    {{ post.content | safe}}
-                </li>
-                <li style="list-style: none">
-                    <a>Автор: {{ post.author | safe}}</a>
-                </li>
+    <table class="table" style="padding-bottom: 80px;">
+            <tbody>
 
-                <li style="list-style: none">
-                    <span style="width: 100%">================================================================</span>
-                </li>
-                {% endfor %}
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'posts' %}">Назад</a>
-            </ul>
-        </td>
-    </tr>
-{% endblock %}
+                 <tr>
+                    <td>
+                        <ul>
+                            {% for post in posts %}
+                            <li style="list-style: none; color: rgb(210 225 14);">
+                                <span>Дата: </span>{{ post.date_created | date:"d.m.Y" | safe}}
+                            </li>
+                            <li style="list-style: none">
+                                <h4><a class="article-title" href="{% url 'post-detail' post.id %}" style="text-decoration: none" >{{ post.title }}</a></h4>
+                            </li>
+                            <li style="list-style: none">
+                                {{ post.content | safe}}
+                            </li>
+                            <li style="list-style: none">
+                                <a>Автор: {{ post.author | safe}}</a>
+                            </li>
+                            <li>
+                                <small>Комментариев: {{ post.comment_count }}</small>
+                            </li>
+
+                            <li style="list-style: none">
+                                <span style="width: 100%">================================================================</span>
+                            </li>
+                            {% endfor %}
+                            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'posts' %}">Назад</a>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+            <footer class="fixed-footer">
+                <img src="/static/img/pushkin_g.png" alt="Герб">
+                <span>г. Пушкин</span><br>
+                <span>&copy; 2025 ТСЖ Царскосёл - 4</span>
+            </footer>
+        <div class="averin_newyear"></div> <!--Новогодние подарки внизу сайта-->
+</body>
+</html>

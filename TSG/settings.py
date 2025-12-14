@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -143,17 +143,20 @@ MEDIA_URL = '/media/'
 # MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 BASE_DIR = Path(__file__).resolve().parent.parent
-# SUMMERNOTE_CONFIG = {
-#     'iframe': True,
-#     'summernote': {
-#         'width': '100%',
-#         'height': '480',
-#     },
-#     'attachment_require_authentication': False,
-# }
 
 
 RECAPTCHA_PUBLIC_KEY = "6Ldu7h8sAAAAAHY17CCI0ReHJAGs_Dlcwd7pBATQ"
 RECAPTCHA_PRIVATE_KEY = "6Ldu7h8sAAAAAH9wVxB8MeqSo9_fl2MWocfF_H-x"
 
 SUMMERNOTE_THEME = 'bs4'
+# ============================ MAIL ===================================
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('E_HOST')
+EMAIL_PORT = os.getenv('E_PORT')
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'postman@tsg-cs4.ru'
+EMAIL_HOST_PASSWORD = os.getenv('E_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# SERVER_EMAIL = EMAIL_HOST_USER
+# EMAIL_ADMIN = EMAIL_HOST_USER

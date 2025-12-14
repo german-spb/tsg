@@ -5,6 +5,7 @@ from .models import Documents, Entry, BlogPost, Comment
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.models import User
+from django.db.models import Count
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -16,6 +17,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
+
 
 
 def index(request):
@@ -47,13 +49,14 @@ def logout_view(request):
     return redirect('/')
 
 #================== Открыть документ =============================
+
 def documents(request):
     docs = Documents.objects.all()
     return render(request, 'document.html', {'docs': docs})
 
 @login_required
 def document_open(request, filename): #---- вывод изображения PDF документа в браузер
-    return FileResponse(open(f'media/documents/{filename}', 'rb'), content_type='application/pdf')
+    return FileResponse(request, open(f'media/documents/{filename}', 'rb'), content_type='application/pdf')
 
 def useful_information(request):
     return render(request, 'useful_information.html')
@@ -79,11 +82,11 @@ class PostCreateView(CreateView):
 
 
 def posts(request):
-    posts = BlogPost.objects.all().order_by('-date_created')
+    posts = BlogPost.objects.annotate(comment_count=Count('comments')).order_by('-date_created')
     return render(request, 'posts.html', {'posts': posts})
 
 def all_posts_user(request):
-    posts = BlogPost.objects.filter(author=request.user).order_by('-date_created')
+    posts = BlogPost.objects.annotate(comment_count=Count('comments')).filter(author=request.user).order_by('-date_created')
     return render(request, 'all_posts_user.html', {'posts': posts})
 
 
@@ -131,3 +134,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
+

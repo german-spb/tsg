@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+.top-menu {
+      position: relative;
+      background: #fff;
+      box-shadow: inset 0 0 10px #ccc;
+}
+    .top-menu:before,
+    .top-menu:after {
+      content: "";
+      display: block;
+      height: 1px;
+      border-top: 3px solid #575350;
+      border-bottom: 1px solid #575350;
+      margin-bottom: 2px;
+}
+.top-menu:after {
+      border-bottom: 3px solid #575350;
+      border-top: 1px solid #575350;
+      box-shadow: 0 2px 7px #ccc;
+      margin-top: 2px;
+}
+.menu-main {
+      list-style: none;
+      padding: 0 30px;
+      margin: 0;
+      font-size: 18px;
+      text-align: center;
+      position: relative;
+
+}
+    .menu-main:before,
+    .menu-main:after {
+     content: "\25C8";
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+    .menu-main:before {left: 15px;}
+    .menu-main:after {right: 15px;}
+    .menu-main li {
+    display: inline-block;
+    padding: 5px 0;
+}
+.menu-main a {
+      text-decoration: none;
+      display: inline-block;
+      margin: 2px 5px;
+      padding: 6px 15px;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 18px;
+      color: #004050;
+      border-bottom: 1px solid transparent;
+      transition: .3s linear;
+}
+.menu-main .current, .menu-main a:hover {
+      border-radius: 3px;
+      background: #f3ece1;
+      color: #bf4717;
+      text-shadow: 0 1px 0 #fff;
+      border-color: #c6c6c6;
+}
+@media (max-width: 500px) {
+    .menu-main li {display: block;}
+}
+
+.nav-item {
+    list-style-type: none;
+}
+
+nav-link btn btn-primary my-btn me-3{
+     width: 152.22222px;
+     list-style: none;
+
+}
+
+.btn-group nav-item{
+    float: left;
+}
+
+.btn-group{
+     margin-top: 10px;
+     margin-bottom: 10px;
+}
+
+.btn{
+    background-color: #6b6464;
+     margin-left: 20px;
+}
+body {
+   background-image: url('../img/fon4.png');
+   background-repeat: no-repeat;
+   background-position: center center;
+   background-attachment: fixed;
+   -webkit-background-size: cover;
+
+
+}
+
+h1 {
+    text-align: center;
+    font-size : 30px;
+    color: #ecf0f1;
+    text-shadow: 2px 2px 4px #000000;
+    font-family: 'Cherry Swash', cursive;
+    margin-top: 15px;
+}
+
+#wrapper{
+     margin-left: 0px;
+     margin-right: 0px;
+     background-image: url('../img/cloud_new_1.jpg');
+     background-size: cover;
+     background-repeat: no-repeat ;
+     background-position: 50% 0%;
+     padding: 45px 0;
+}
+
+.fixed-footer {
+      position: fixed;           /* Фиксируем подвал */
+      bottom: 0;                 /* Прижимаем к нижнему краю */
+      left: 0;
+      width: 100%;               /* На всю ширину экрана */
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 0px 20px;
+      text-align: left;
+      font-size: 14px;
+      color: #fff;
+      align-items: left;
+      font-weight: bold;
+}
+
+.table {
+	width: 60%;
+	margin: 0 auto;
+	border-collapse: separate; /* Обязательно для border-radius */
+    border-spacing: 0; /* Убирает отступы между ячейками, если нужно */
+    border-radius: 20px;
+    overflow: hidden;
+    padding-bottom: 80px;
+
+}
+.table th {
+	font-weight: bold;
+	padding: 5px;
+	background: #efefef;
+    border: 0px solid #dddddd;
+}
+
+.table td {
+	padding: 5px;
+    color: #f0f0f0;
+    background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.form-container {
+            padding: 0px;
+            margin: 0px auto;
+        }
+
+.averin_newyear {
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 136px;
+		z-index: 500;
+		display: block;
+		background: url('../img/image.png') no-repeat top center;
+		background-size: cover;
+	}

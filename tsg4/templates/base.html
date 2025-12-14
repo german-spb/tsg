@@ -1,48 +1,45 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="ru" data-bs-theme="dark" class="h-100">
+<html lang="ru" data-bs-theme="dark" class="h-50">
 <head>
-    <title>{% block title %}ТСЖ "Царскосёл-4" | товарищество собственников жилья  в г. Пушкин{% endblock%}</title>
+    <title>{% block title %}ТСЖ "Царскосёл-4" | г. Пушкин{% endblock%}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'img/favicon.ico' %}" />
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
     <link href="{% static "css/base.css" %}" rel="stylesheet">
     <script src="{% static "js/bootstrap.bundle.js" %}"></script>
-    <link href="{% static 'django_summernote/summernote.css' %}" rel="stylesheet">
-    <script src="code.jquery.com"></script>
-    <script src="{% static 'django_summernote/summernote.min.js' %}"></script>
+    <!--<link href="{% static 'django_summernote/summernote.css' %}" rel="stylesheet"> -->
+    <!-- <script src="code.jquery.com"></script> -->
+    <!-- <script src="{% static 'django_summernote/summernote.min.js' %}"></script> -->
     <!--<script src="https://www.expertplus.ru/UserFiles/Image/content/new_year/09.js"></script> -- Снежинки -->
-
 </head>
-<div id="wrapper" >
+    <div id="wrapper" style="margin-top: 0px;" >
 
-    {% if user.is_authenticated %}
-    <div class="dropdown">
-        <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-            {{ request.user }}
-        </button>
-        <ul class="dropdown-menu dd-color">
-            <li><a class="dropdown-item dd-item-color" href="{% url 'post-create' %}">Добавить пост</a></li>
-            <li><a class="dropdown-item dd-item-color" href="{% url 'posts_user' %}">Все ваши посты</a></li>
-            <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>
-        </ul>
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+            <button class="btn btn-primary my-btn dropdown-toggle me-3" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                {{ request.user }}
+            </button>
+            <ul class="dropdown-menu dd-color">
+                <li><a class="dropdown-item dd-item-color" href="{% url 'post-create' %}">Добавить пост</a></li>
+                <li><a class="dropdown-item dd-item-color" href="{% url 'posts_user' %}">Все ваши посты</a></li>
+                <li><a class="dropdown-item dd-item-color" href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </div>
+        {% else %}
+        <div class="btn-group">
+            <li class="nav-item" style="width: 152.22222px;">
+                <a class="nav-link btn btn-primary my-btn me-3" href="{% url 'login' %}">Войти</a>
+            </li>
+            <li class="nav-item" style="width: 152.22222px;">
+                <a class="nav-link btn btn-primary my-btn me-3"
+                   href="{% url 'signup' %}">Регистрация</a>
+            </li>
+        </div>
+        {% endif %}
     </div>
-
-{% else %}
-   <div class="btn-group">
-        <li class="nav-item" style="width: 152.22222px;">
-            <a class="nav-link btn btn-primary my-btn me-3" href="{% url 'login' %}">Войти</a>
-        </li>
-        <li class="nav-item" style="width: 152.22222px;">
-            <a class="nav-link btn btn-primary my-btn me-3"
-               href="{% url 'signup' %}">Регистрация</a>
-        </li>
-   </div>
-{% endif %}
-</div>
-<!-- <body class="d-flex flex-column h-100"> -->
 <body>
     {% block content %}
     <nav class="top-menu">
@@ -54,8 +51,7 @@
         <li><a href="/posts">Предложения</a></li>
       </ul>
     </nav>
-
- <h1>ТСЖ "Царскосёл - 4"</h1>
+    <h1>ТСЖ "Царскосёл - 4"</h1>
     {% endblock %}
     <table class="table">
             <tbody>
@@ -70,7 +66,7 @@
                             <li>
                                 <h3>Правление</h3>
                                 Зырин Владимир Владимирович - председатель<br>
-                                Локтионова Светлана - член правления
+                                Локтионова Светлана
                             </li>
                             <br>
                             <li>
@@ -91,12 +87,11 @@
                                 БИК 044030653
                             </li>
                         </ul>
-                     </td>
-                {% endblock %}
+                    </td>
+                     {% endblock %}
                 </tr>
             </tbody>
     </table>
-
     {% block footer %}
     <footer class="fixed-footer">
         <img src="/static/img/pushkin_g.png" alt="Герб">
@@ -104,7 +99,7 @@
         <span>&copy; 2025 ТСЖ Царскосёл - 4</span>
     </footer>
     {% endblock %}
-<div class="averin_newyear"></div> <!--Новогодние подарки внизу сайта-->
+    <div class="averin_newyear"></div> <!--Новогодние подарки внизу сайта-->
 </body>
 </html>
 
