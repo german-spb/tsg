@@ -51,7 +51,7 @@
      <h1>Предложения, пожелания собственников</h1>
     {% if user.is_anonymous %}
     <marquee behavior="scroll" direction="left" scrollamount="5">
-        Создавать пост и оставлять комментарии могут только авторизованные пользователи
+        Создавать пост и оставлять комментарии могут только зарегистрированные пользователи
     </marquee>
     {% endif %}
     <table class="table" style="padding-bottom: 80px; max-width: 100%;">
@@ -59,7 +59,7 @@
                         {% for post in posts %}
                         <tr>
                             <td style="border-collapse: separate; border-radius: 20px; overflow-wrap: break-word; word-break: break-all;">
-                                <ul style="padding-left: 12px;">
+                                <ul style="padding-left: 13px;">
                                     <li style="list-style: none; color: rgb(210 225 14);">
                                         <span>Дата: </span>{{ post.date_created | date:"d.m.Y" | safe}}
                                     </li>

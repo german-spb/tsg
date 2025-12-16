@@ -2,6 +2,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from smtplib import SMTPException
 
 from .models import Entry, BlogPost
 from django.contrib.auth.models import User
@@ -15,14 +16,16 @@ def create_notification_for_user(sender, instance, created, **kwargs):
        name = instance.username
        subject = 'Добро пожаловать на сайт ТСЖ "Царскосёл-4"!'
        message = f'Привет, {name}! \nВы успешно зарегистрировались на сайте "Царскосёл-4".'
-
-       send_mail(
-           subject=subject,
-           message=message,
-           from_email=settings.EMAIL_HOST_USER,
-           recipient_list=[email],
-           fail_silently=False,
-       )
+       try:
+           send_mail(
+               subject=subject,
+               message=message,
+               from_email=settings.EMAIL_HOST_USER,
+               recipient_list=[email],
+               fail_silently=False,
+           )
+       except SMTPException as e:
+           print('There was an error sending an email: ', e)
 
 
 @receiver(post_save, sender=Entry)
@@ -43,7 +46,7 @@ def create_notification_for_entry(sender, instance, created, **kwargs):
                 )
                email_tuples.append(email_tuple)
             # Отправляем все письма одним вызовом
-       send_mass_mail(email_tuples, fail_silently=False)
+       send_mass_mail(email_tuples, fail_silently=True)
 
 @receiver(post_save, sender=BlogPost)
 def create_notification_for_post(sender, instance, created, **kwargs):
@@ -56,11 +59,11 @@ def create_notification_for_post(sender, instance, created, **kwargs):
        for user in users:
                email_tuple = (
                  'Новый пост на сайте ТСЖ',  # subject
-                    f'Привет, {user.username}! \nПосмотрите новый пост от {author}: \n{full_url}',  # message
+                    f'Привет, {user.username}! \nПосмотрите новый пост от {author}: {full_url}',  # message
                    settings.EMAIL_HOST_USER,  # from_email
                     [user.email],  # recipient_list
-                )
+               )
                email_tuples.append(email_tuple)
-       send_mass_mail(email_tuples, fail_silently=False)
+       send_mass_mail(email_tuples, fail_silently=True)
 
 

@@ -14,6 +14,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 class BlogPostAdmin(SummernoteModelAdmin):  # instead of ModelAdmin
     summernote_fields = ('content',)
+    list_display = ('author', 'title', 'content', 'date_created')
 admin.site.register(BlogPost, BlogPostAdmin)
 
 
