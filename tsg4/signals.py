@@ -16,16 +16,13 @@ def create_notification_for_user(sender, instance, created, **kwargs):
        name = instance.username
        subject = 'Добро пожаловать на сайт ТСЖ "Царскосёл-4"!'
        message = f'Привет, {name}! \nВы успешно зарегистрировались на сайте "Царскосёл-4".'
-       try:
-           send_mail(
-               subject=subject,
-               message=message,
-               from_email=settings.EMAIL_HOST_USER,
-               recipient_list=[email],
-               fail_silently=False,
-           )
-       except SMTPException as e:
-           print('There was an error sending an email: ', e)
+       send_mail(
+           subject=subject,
+           message=message,
+           from_email=settings.EMAIL_HOST_USER,
+           recipient_list=[email],
+           fail_silently=True, # при True ошибки будут игнорироваться
+       )
 
 
 @receiver(post_save, sender=Entry)
@@ -35,18 +32,19 @@ def create_notification_for_entry(sender, instance, created, **kwargs):
        domain = '192.168.31.14:8000/notice/'
        full_url = f"http://{domain}"
        users = User.objects.all()
+
             # Создаем список кортежей для массовой отправки
        email_tuples = []
        for user in users:
                email_tuple = (
                  'Объявление на сайте ТСЖ',  # subject
-                    f'Привет, {user.username}! \nПосмотрите новое объявление: \n{full_url}',  # message
+                    f'Привет, {user.username}! \nПосмотрите новое объявление на сайте ТСЖ: \n{full_url}',  # message
                    settings.EMAIL_HOST_USER,  # from_email
                     [user.email],  # recipient_list
                 )
                email_tuples.append(email_tuple)
             # Отправляем все письма одним вызовом
-       send_mass_mail(email_tuples, fail_silently=True)
+       send_mass_mail(email_tuples, fail_silently=False)
 
 @receiver(post_save, sender=BlogPost)
 def create_notification_for_post(sender, instance, created, **kwargs):
@@ -56,6 +54,7 @@ def create_notification_for_post(sender, instance, created, **kwargs):
        full_url = f"http://{domain}"
        users = User.objects.all()
        email_tuples = []
+
        for user in users:
                email_tuple = (
                  'Новый пост на сайте ТСЖ',  # subject
@@ -64,6 +63,6 @@ def create_notification_for_post(sender, instance, created, **kwargs):
                     [user.email],  # recipient_list
                )
                email_tuples.append(email_tuple)
-       send_mass_mail(email_tuples, fail_silently=True)
+       send_mass_mail(email_tuples, fail_silently=False)
 
 
