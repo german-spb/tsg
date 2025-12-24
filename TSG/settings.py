@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tinymce',
     'django_summernote',
     'django_recaptcha',
+    'django_password_eye',
 
     'tsg4',
 ]
