@@ -4,6 +4,9 @@
 <head>
     <title>{% block title %}ТСЖ "Царскосёл-4" | г. Пушкин{% endblock%}</title>
     <meta charset="utf-8">
+    {% block meta %}
+    <meta name="description" content="Официальный сайт ТСЖ 'Царскосёл-4': актуальная информация о работе товарищества, объявления, квитанции, контакты правления. Узнать подробности и задать вопросы жителям" />
+    {% endblock meta %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{% static 'img/favicon.ico' %}" />
     <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
@@ -92,10 +95,12 @@
                             </li>
                         </ul>
                     </td>
-                     {% endblock %}
+                     {% endblock content_1 %}
                 </tr>
             </tbody>
     </table>
+    {% block content_2 %}
+    {% endblock content_2 %}
     {% block footer %}
     <footer class="fixed-footer">
         <img src="/static/img/pushkin_g.png" alt="Герб">
