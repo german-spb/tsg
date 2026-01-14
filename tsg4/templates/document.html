@@ -13,7 +13,7 @@
         <li><a href="/posts">Предложения</a></li>
       </ul>
     </nav>
-    <h1>Документы, тарифы</h1>
+    <h1>Документы</h1>
     {% endblock %}
     {% block content_1 %}
     {% for document in docs %}
@@ -31,4 +31,30 @@
             <!-- {% endif %} -->
         </tr>
     {% endfor %}
-    {% endblock %}
+    {% endblock content_1 %}
+    {% block content_2 %}
+    <h1>Тарифы</h1>
+        <table class="table">
+	<thead>
+		<tr>
+			<th>Услуга ЖКХ</th>
+			<th>Тариф</th>
+			<th>за единицу</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Содержание общего имущества</td>
+			<td>15,77</td>
+			<td>м2</td>
+		</tr>
+		<tr>
+			<td>Текущий ремонт</td>
+			<td>8,33</td>
+			<td>м2</td>
+		</tr>
+	</tbody>
+</table>
+
+    {% endblock content_2 %}

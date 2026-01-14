@@ -171,3 +171,9 @@ h1 {
 		background: url('../img/image.png') no-repeat top center;
 		background-size: cover;
 	}
+
+.main {
+    color: #75caeb;
+
+    padding: 20px;
+}

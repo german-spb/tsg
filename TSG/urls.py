@@ -22,6 +22,8 @@ from tsg4 import views
 from django.conf import settings
 from django.urls import re_path
 from django.views.static import serve
+from django.views.generic.base import RedirectView
+from django.templatetags.static import static
 
 
 
@@ -48,5 +50,6 @@ urlpatterns = [
     path('post/<int:pk>/delete/', views.PostDeleteView.as_view(success_url="/posts_user/"), name='post-delete'),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url=static('favicon.ico'))),
 
     ]
