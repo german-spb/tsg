@@ -93,6 +93,7 @@ body {
    background-position: center center;
    background-attachment: fixed;
    -webkit-background-size: cover;
+   padding-bottom: 60px;
 
 }
 
@@ -128,6 +129,7 @@ h1 {
       color: #fff;
       align-items: left;
       font-weight: bold;
+
 }
 
 .table {

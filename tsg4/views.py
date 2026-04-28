@@ -51,7 +51,7 @@ def logout_view(request):
 #================== Открыть документ =============================
 
 def documents(request):
-    docs = Documents.objects.all()
+    docs = Documents.objects.all().order_by('-id')
     return render(request, 'document.html', {'docs': docs})
 
 @login_required
@@ -64,8 +64,8 @@ def useful_information(request):
 #======================= Объявления ============================
 
 def notice(request):
-    ads = Entry.objects.all()
-    return render(request, 'notice.html', {'ads': ads})
+    ads = Entry.objects.all().order_by('-date_created')
+    return render(request, 'notice_2.html', {'ads': ads})
 
 #================ Создание поста ============================
 
@@ -83,7 +83,7 @@ class PostCreateView(CreateView):
 
 def posts(request):
     posts = BlogPost.objects.annotate(comment_count=Count('comments')).order_by('-date_created')
-    return render(request, 'posts.html', {'posts': posts})
+    return render(request, 'posts_2.html', {'posts': posts})
 
 def all_posts_user(request):
     posts = BlogPost.objects.annotate(comment_count=Count('comments')).filter(author=request.user).order_by('-date_created')
